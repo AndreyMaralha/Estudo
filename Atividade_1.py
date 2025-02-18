@@ -25,49 +25,42 @@
 # const employee = new Employee("Nome", 3000, new SalariedPayStrategy());
 # console.log(employee.calculateSalary());
 
+# fazer varias interfaces dependendo da resposta
 
-# Salário Base:
-
-def S_funcionarios():
-
-    S_funcionario_horista = float(
-        input("Quanto será a hora do Funcionário Horista? "))
-    S_funcionario_assalariado = float(
-        input("Qual será o salário do Funcionário Assalariado? "))
-    S_funcionario_comissionado = float(
-        input("Qual será o salário do Funcionário Comissionado? "))
-    horas = float(
-        input("(Em horas) Qual será o tempo que o funcionário horista trabalhará? "))
-
-    salario_horista = S_funcionario_horista * horas
-
-    print("O Salário do Funcionário Horista foi de: R$",
-          salario_horista, "e trabalhou:", horas, "horas")
-    print("O Salário do Funcionário Assalariado foi de: R$",
-          S_funcionario_assalariado)
-    print("O Salário do Funcionário Comissionado foi de: R$",
-          S_funcionario_comissionado)
-
-    return salario_horista, S_funcionario_assalariado, S_funcionario_comissionado
+funcionarios = str(input("Qual será o funcionário escolhido? "))
 
 
-def bonus(salario_horista, salario_assalariado, salario_comissionado):
+def funcionario_Horista():
+    if funcionarios == "horista":
+        hora_cobrada = int(input("Quanto tempo ele trabalhará? "))
+        valor_hora = int(input("Quanto vai receber por hora? "))
+        horista = (hora_cobrada * valor_hora)
+        print("O funcionário horistá recebera um total de:", horista)
+        if horista >= 1800:
+            horista += 200
+            print("Recebeu um bônus de R$200!!")
+            print("O funcionário recebera um total de:", horista)
 
-    if salario_horista > 1800:
-        salario_horista += 200
-        print("Parabéns, foi concedido R$200 de bônus para o Funcionário Horista!")
-    if salario_assalariado > 1800:
-        salario_assalariado += 200
-        print("Parabéns, foi concedido R$200 de bônus para o Funcionário Assalariado!")
-    if salario_comissionado > 1800:
-        salario_comissionado += 200
-        print("Parabéns, foi concedido R$200 de bônus para o Funcionário Comissionado!")
-
-    print("Novo salário do Funcionário Horista: R$", salario_horista)
-    print("Novo salário do Funcionário Assalariado: R$", salario_assalariado)
-    print("Novo salário do Funcionário Comissionado: R$", salario_comissionado)
+def funcionario_assalariado():
+    if funcionarios == "assalariado":
+        salario = int(input("Qual será o salário? "))
+        if salario >= 1800:
+            salario += 200
+            print("Recebeu um bônus de R$200!!")
+            print("O funcionário recebera um total de:", salario)
 
 
-salario_horista, salario_assalariado, salario_comissionado = S_funcionarios()
+def funcionario_comissionado():
+    if funcionarios == "comissionado":
+        q_vendas = int(input("Quantas vendas foram feitas? "))
+        v_vendas = int(input("Qual o valor de cada venda? "))
+        s_comissionado = (q_vendas * v_vendas)
+        if s_comissionado >= 1800:
+            s_comissionado += 200
+            print("Recebeu um bônus de R$200!!")
+            print("O funcionário comissionado recebera um total de:", s_comissionado)
 
-bonus(salario_horista, salario_assalariado, salario_comissionado)
+
+funcionario_Horista()
+funcionario_assalariado()
+funcionario_comissionado()
